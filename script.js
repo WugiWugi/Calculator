@@ -25,7 +25,7 @@ function addToString(value) {
     current_operand.textContent += value;
 }
 
-// Привязка обработчиков событий
+// Сами кнопки
 one.addEventListener('click', () => addToString('1'));
 two.addEventListener('click', () => addToString('2'));
 three.addEventListener('click', () => addToString('3'));
@@ -44,6 +44,28 @@ point.addEventListener('click', () => {
     }
 }
 );
+// Сами кнопки
+
+
+//Операции вычислений
+equally.addEventListener('click', () =>{
+    let operator = previous_operand.textContent[previous_operand.textContent.length -1]
+    let operand1 = Number(previous_operand.textContent = previous_operand.textContent.slice(0, -1))
+    let operand2 = Number(current_operand.textContent)
+    previous_operand.textContent=''
+    if(operator==='+'){
+        current_operand.textContent = operand1+operand2
+    }else if(operator==='-'){
+        current_operand.textContent = operand1-operand2
+    }else if(operator==='*'){
+        current_operand.textContent = operand1*operand2
+    }else if(operator==='/'){
+        current_operand.textContent = operand1/operand2
+    }
+
+});
+//Операции вычислений
+
 
 
 // Кнопки для операций
@@ -74,6 +96,7 @@ division.addEventListener('click', () => {
 // Кнопки для операций
 
 
+//Кнопки удаления
 AC.addEventListener('click', () => {
     previous_operand.textContent = ''
     current_operand.textContent = '';  // Очищает строку полностью
@@ -82,6 +105,6 @@ AC.addEventListener('click', () => {
 DEL.addEventListener('click', () => {
     current_operand.textContent = current_operand.textContent.slice(0, -1);  // Удаляет последний символ
 });
-
+//Кнопки удаления
 
 
