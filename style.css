@@ -1,0 +1,148 @@
+body {
+    margin: 0px;
+    background-color: #00A779;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.calculator {
+    height: 500px;
+    width: 400px;
+    background-color: #00110c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 50px;
+    gap: 15px;
+    box-shadow: 0px 0px 100px  #40be9b;
+}
+
+.calculator__string {
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    background-color: #5FD3B3;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex: 1;
+    width: 100%;
+    padding: 16px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.previous-operand{
+    font-size: 20px;
+}
+
+.calculator__buttons {
+    flex: 4;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        'AC AC DEL division'
+        'one two three multiplication'
+        'four five six plus'
+        'seven eight nine minus'
+        'point zero equally equally';
+    gap: 8px;
+
+}
+
+.calculator__button {
+    border-radius: 6px;
+    border: 1px solid #00A779;
+    background: none;
+    color: #00A779;
+    font-weight: 600;
+}
+
+.calculator__button:hover {
+    border: 1px solid #7fdbc1;
+    color: #7fdbc1;
+
+}
+
+
+.AC {
+    grid-area: AC;
+}
+
+.DEL {
+    grid-area: DEL;
+}
+
+.division {
+    grid-area: division;
+}
+
+.one {
+    grid-area: one;
+}
+
+.two {
+    grid-area: two;
+}
+
+.three {
+    grid-area: three;
+}
+
+.multiplication {
+    grid-area: multiplication;
+}
+
+.four {
+    grid-area: four;
+}
+
+.five {
+    grid-area: five;
+}
+
+.six {
+    grid-area: six;
+}
+
+.plus {
+    grid-area: plus;
+}
+
+.seven {
+    grid-area: seven;
+}
+
+.eight {
+    grid-area: eight;
+}
+
+.nine {
+    grid-area: nine;
+}
+
+.minus {
+    grid-area: minus;
+}
+
+.point {
+    grid-area: point;
+}
+
+.zero {
+    grid-area: zero;
+}
+
+.equally {
+    grid-area: equally;
+}
