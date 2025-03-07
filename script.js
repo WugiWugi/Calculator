@@ -17,7 +17,7 @@ const seven = document.querySelector('#seven')
 const eight = document.querySelector('#eight')
 const nine = document.querySelector('#nine')
 const minus = document.querySelector('#minus')
-const point = document.querySelector('#AC')
+const point = document.querySelector('#point')
 const zero = document.querySelector('#zero')
 const equally = document.querySelector('#equally')
 
@@ -37,39 +37,51 @@ eight.addEventListener('click', () => addToString('8'));
 nine.addEventListener('click', () => addToString('9'));
 zero.addEventListener('click', () => addToString('0'));
 
+point.addEventListener('click', () => {
+    let content = current_operand.textContent
+    if (content.split('').includes('.') !== true) {
+        addToString('.')
+    }
+}
+);
+
+
 // Кнопки для операций
 plus.addEventListener('click', () => {
-    let content = current_operand.textContent 
+    let content = current_operand.textContent
     current_operand.textContent = '',
-    previous_operand.textContent = `${content} +`},
+        previous_operand.textContent = `${content} +`
+},
 );
 
 minus.addEventListener('click', () => {
-    let content = current_operand.textContent 
+    let content = current_operand.textContent
     current_operand.textContent = '',
-    previous_operand.textContent = `${content} -`},
+        previous_operand.textContent = `${content} -`
+},
 );
 multiplication.addEventListener('click', () => {
-    let content = current_operand.textContent 
+    let content = current_operand.textContent
     current_operand.textContent = '',
-    previous_operand.textContent = `${content} *`},);
+        previous_operand.textContent = `${content} *`
+},);
 
 division.addEventListener('click', () => {
-    let content = current_operand.textContent 
+    let content = current_operand.textContent
     current_operand.textContent = '',
-    previous_operand.textContent = `${content} /`},);
-
-point.addEventListener('click', () => {
-    let content = current_operand.textContent 
-    current_operand.textContent = '',
-    previous_operand.textContent = `${content} -`},);
+        previous_operand.textContent = `${content} /`
+},);
+// Кнопки для операций
 
 
 AC.addEventListener('click', () => {
     previous_operand.textContent = ''
-    current_operand.textContent = '';  // Очистить строку
+    current_operand.textContent = '';  // Очищает строку полностью
 });
 
 DEL.addEventListener('click', () => {
-    current_operand.textContent = current_operand.textContent.slice(0, -1);  // Удалить последний символ
+    current_operand.textContent = current_operand.textContent.slice(0, -1);  // Удаляет последний символ
 });
+
+
+
