@@ -5,20 +5,10 @@ const button = document.querySelectorAll('.calculator__button')
 const AC = document.querySelector('#AC')
 const DEL = document.querySelector('#DEL')
 const division = document.querySelector('#division')
-const one = document.querySelector('#one')
-const two = document.querySelector('#two')
-const three = document.querySelector('#three')
 const multiplication = document.querySelector('#multiplication')
-const four = document.querySelector('#four')
-const five = document.querySelector('#five')
-const six = document.querySelector('#six')
 const plus = document.querySelector('#plus')
-const seven = document.querySelector('#seven')
-const eight = document.querySelector('#eight')
-const nine = document.querySelector('#nine')
 const minus = document.querySelector('#minus')
 const point = document.querySelector('#point')
-const zero = document.querySelector('#zero')
 const equally = document.querySelector('#equally')
 
 function addToString(value) {
@@ -26,44 +16,49 @@ function addToString(value) {
 }
 
 // Сами кнопки
-one.addEventListener('click', () => addToString('1'));
-two.addEventListener('click', () => addToString('2'));
-three.addEventListener('click', () => addToString('3'));
-four.addEventListener('click', () => addToString('4'));
-five.addEventListener('click', () => addToString('5'));
-six.addEventListener('click', () => addToString('6'));
-seven.addEventListener('click', () => addToString('7'));
-eight.addEventListener('click', () => addToString('8'));
-nine.addEventListener('click', () => addToString('9'));
-zero.addEventListener('click', () => addToString('0'));
 
-point.addEventListener('click', () => {
-    let content = current_operand.textContent
-    if (content.split('').includes('.') !== true) {
-        addToString('.')
+document.querySelectorAll('.number').forEach(btn => {
+    btn.addEventListener('click', () => addToString(btn.textContent))
+  })
+
+
+  point.addEventListener('click', () => {
+    const content = current_operand.textContent
+    if (!content.includes('.') && content !== '') {
+      addToString(content === '' ? '0.' : '.')
     }
-}
-);
+  })
+
 // Сами кнопки
 
 
 //Операции вычислений
+
+function calculate(operand1, operand2, operator) {
+    const ops = {
+      '+': (a, b) => a + b,
+      '-': (a, b) => a - b,
+      '*': (a, b) => a * b,
+      '/': (a, b) => a / b
+    }
+    return ops[operator]?.(operand1, operand2) ?? 'Ошибка'
+  }
+
+
+
 equally.addEventListener('click', () =>{
     let operator = previous_operand.textContent[previous_operand.textContent.length -1]
-    let operand1 = Number(previous_operand.textContent = previous_operand.textContent.slice(0, -1))
+    let operand1 = Number(previous_operand.textContent.slice(0, -1))
     let operand2 = Number(current_operand.textContent)
-    previous_operand.textContent=''
-    if(operator==='+'){
-        current_operand.textContent = operand1+operand2
-    }else if(operator==='-'){
-        current_operand.textContent = operand1-operand2
-    }else if(operator==='*'){
-        current_operand.textContent = operand1*operand2
-    }else if(operator==='/'){
-        current_operand.textContent = operand1/operand2
-    }
-
+    if (operator === '/' && operand2 === 0) {
+        current_operand.textContent = 'Ошибка'
+        previous_operand.textContent = '';
+        return
+      }
+    current_operand.textContent = calculate(operand1, operand2, operator);
+    previous_operand.textContent = '';
 });
+
 //Операции вычислений
 
 
@@ -71,27 +66,35 @@ equally.addEventListener('click', () =>{
 // Кнопки для операций
 plus.addEventListener('click', () => {
     let content = current_operand.textContent
+    if(content !== ''){
     current_operand.textContent = '',
         previous_operand.textContent = `${content} +`
+    }
 },
 );
 
 minus.addEventListener('click', () => {
     let content = current_operand.textContent
+    if(content !== ''){
     current_operand.textContent = '',
         previous_operand.textContent = `${content} -`
+    }
 },
 );
 multiplication.addEventListener('click', () => {
     let content = current_operand.textContent
+    if(content !== ''){
     current_operand.textContent = '',
         previous_operand.textContent = `${content} *`
+    }
 },);
 
 division.addEventListener('click', () => {
     let content = current_operand.textContent
-    current_operand.textContent = '',
+if(content !== ''){
+        current_operand.textContent = '',
         previous_operand.textContent = `${content} /`
+}
 },);
 // Кнопки для операций
 
